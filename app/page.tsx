@@ -25,8 +25,30 @@ export default function Home() {
 
   return (
     <div className={`${styles.container} ${instrumentSans.className}`}>
+      {/* Butterflies in the background */}
+      <img
+        src="/playground/butterfly-flutter.webp"
+        className={styles.butterfly1}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        src="/playground/butterfly-flutter.webp"
+        className={styles.butterfly2}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        src="/playground/butterfly-flutter.webp"
+        className={styles.butterfly3}
+        alt=""
+        aria-hidden="true"
+      />
       <header className={styles.header}>
-        <h1>Elizabeth's prototypes</h1>
+        <h1>Oubadi Momo's prototypes</h1>
+        <div className={styles.subtitle}>
+          ・｡☆ Exploring the digital frontier ☆｡・
+        </div>
       </header>
 
       <main>
