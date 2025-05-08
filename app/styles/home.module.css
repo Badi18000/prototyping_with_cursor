@@ -5,7 +5,6 @@
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
   width: 100vw;
-  /* Blue/purple gradient background */
   background: linear-gradient(135deg, #3a3d7c 0%, #6e7ff3 100%);
   position: relative;
   display: flex;
@@ -62,38 +61,6 @@
   text-shadow: 0 2px 8px #3a3d7c;
 }
 
-.star {
-  font-size: 2.2rem;
-  margin: 0 0.5rem;
-  vertical-align: middle;
-  filter: drop-shadow(0 2px 6px #b6c6f9);
-  animation: twinkle 1.5s infinite alternate;
-}
-
-@keyframes twinkle {
-  0% { filter: drop-shadow(0 2px 6px #b6c6f9) brightness(1); }
-  100% { filter: drop-shadow(0 4px 12px #a5b4fc) brightness(1.2); }
-}
-
-.macBar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  position: absolute;
-  left: 2rem;
-  top: 2rem;
-  height: 18px;
-}
-
-.macDot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0 1px 4px rgba(60,80,120,0.10);
-  border: 1.5px solid #e0e7ef;
-}
-
 .grid {
   display: flex;
   flex-direction: column;
@@ -144,24 +111,12 @@
   transform: translateY(-4px) scale(1.025);
 }
 
-.cardIcon {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(236, 242, 255, 0.7);
-  border-radius: 14px;
-  box-shadow: 0 2px 8px 0 rgba(99, 102, 241, 0.08);
-  margin-right: 0.5rem;
-}
-
+/* Butterflies background */
 .butterfly1 {
   position: absolute;
   top: 8%;
   left: 6%;
-  width: 90px;
+  width: 90px; /* Smallest */
   transform: rotate(-18deg);
   opacity: 0.18;
   filter: blur(1.5px) brightness(1.2);
@@ -174,7 +129,7 @@
   position: absolute;
   bottom: 12%;
   right: 10%;
-  width: 200px;
+  width: 200px; /* Largest */
   transform: rotate(14deg) scaleX(-1);
   opacity: 0.13;
   filter: blur(2.5px) brightness(1.1);
@@ -187,11 +142,11 @@
   position: absolute;
   top: 55%;
   left: 60%;
-  width: 140px;
+  width: 140px; /* Medium */
   transform: rotate(32deg);
   opacity: 0.15;
   filter: blur(1.2px) brightness(1.15);
   mix-blend-mode: lighten;
   pointer-events: none;
   z-index: 0;
-} 
+}
