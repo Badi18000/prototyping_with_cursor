@@ -9,6 +9,7 @@
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 import "./styles/globals.css";
 
 const geistSans = Geist({
@@ -21,8 +22,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-brutal",
+});
+
 export const metadata: Metadata = {
-  title: "Oubadi Momo's prototypes",
+  title: "Oubadi Designer",
   description: "The home for all my prototypes",
   icons: {
     icon: [
@@ -41,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSans.variable}`}>
         {children}
       </body>
     </html>

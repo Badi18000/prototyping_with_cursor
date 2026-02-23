@@ -1,152 +1,106 @@
-/* Import Inter from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/*
+  Brutalist + Modern/Minimalist aesthetic
+  - Raw typography, high contrast, exposed structure
+  - Generous whitespace, clean lines, intentional restraint
+  - No decoration, no gradients, no blur
+*/
 
 .container {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-brutal), system-ui, sans-serif;
   min-height: 100vh;
-  width: 100vw;
-  background: linear-gradient(135deg, #3a3d7c 0%, #6e7ff3 100%);
-  position: relative;
+  width: 100%;
+  background: #fafafa;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0;
-  overflow: hidden;
+  padding: 4rem 1.5rem 6rem;
+  overflow-x: hidden;
 }
 
-/* Grid overlay using ::before pseudo-element */
+/* Exposed grid structure - brutalist */
 .container::before {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(#e5e5e5 1px, transparent 1px),
+    linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
+  background-size: 24px 24px;
   pointer-events: none;
   z-index: 0;
+  opacity: 0.6;
 }
 
 .header {
-  margin-top: 3.5rem;
-  margin-bottom: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 4rem;
+  text-align: center;
   position: relative;
   z-index: 1;
 }
 
 .header h1 {
-  font-family: 'Inter', sans-serif;
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 700;
-  background: linear-gradient(90deg, #f7b2ff 0%, #fff 60%, #f7b2ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 6px 32px #a5b4fc, 0 2px 8px #3a3d7c;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  letter-spacing: 1px;
+  color: #0a0a0a;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
 }
 
 .subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.2rem;
-  color: #fff;
-  opacity: 0.85;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 8px #3a3d7c;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #737373;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
+/* Card grid - minimal, structured */
 .grid {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  align-items: center;
+  gap: 0.75rem;
   width: 100%;
+  max-width: 320px;
+  position: relative;
   z-index: 1;
 }
 
 .card {
-  font-family: 'Inter', sans-serif;
-  background: rgba(255,255,255,0.13);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(60, 80, 120, 0.18);
-  backdrop-filter: blur(12px) saturate(1.2);
-  border: 1.5px solid rgba(255,255,255,0.18);
-  padding: 2.2rem 2.2rem 2.2rem 2.2rem;
-  min-width: 340px;
-  max-width: 480px;
-  width: 100%;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  transition: box-shadow 0.2s, transform 0.2s;
-  margin-bottom: 0.5rem;
-}
-
-.card h3 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #f7b2ff;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.5px;
-  font-family: 'Inter', sans-serif;
-}
-
-.card p {
-  font-size: 1.05rem;
-  opacity: 0.92;
-  color: #fff;
-  line-height: 1.6;
-  font-family: 'Inter', sans-serif;
+  background: #fff;
+  border: 2px solid #0a0a0a;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  color: #0a0a0a;
+  text-decoration: none;
+  display: block;
+  transition: 
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .card:hover {
-  box-shadow: 0 16px 48px 0 #a5b4fc;
-  transform: translateY(-4px) scale(1.025);
+  background: #0a0a0a;
+  color: #fafafa;
+  transform: translate(4px, -4px);
 }
 
-/* Butterflies background */
-.butterfly1 {
-  position: absolute;
-  top: 8%;
-  left: 6%;
-  width: 90px; /* Smallest */
-  transform: rotate(-18deg);
-  opacity: 0.18;
-  filter: blur(1.5px) brightness(1.2);
-  mix-blend-mode: lighten;
-  pointer-events: none;
-  z-index: 0;
+.card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
 }
 
-.butterfly2 {
-  position: absolute;
-  bottom: 12%;
-  right: 10%;
-  width: 200px; /* Largest */
-  transform: rotate(14deg) scaleX(-1);
-  opacity: 0.13;
-  filter: blur(2.5px) brightness(1.1);
-  mix-blend-mode: lighten;
-  pointer-events: none;
-  z-index: 0;
+.card p {
+  font-size: 0.8rem;
+  color: inherit;
+  opacity: 0.85;
+  line-height: 1.5;
 }
 
-.butterfly3 {
-  position: absolute;
-  top: 55%;
-  left: 60%;
-  width: 140px; /* Medium */
-  transform: rotate(32deg);
-  opacity: 0.15;
-  filter: blur(1.2px) brightness(1.15);
-  mix-blend-mode: lighten;
-  pointer-events: none;
-  z-index: 0;
+.card:hover p {
+  opacity: 0.9;
 }

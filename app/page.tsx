@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from './styles/home.module.css';
-import { instrumentSans } from './fonts';
 
 export default function Home() {
   // Add your prototypes to this array
@@ -15,6 +14,11 @@ export default function Home() {
       description: 'An interactive button that creates a colorful confetti explosion',
       path: '/prototypes/confetti-button'
     },
+    {
+      title: 'Café landing page',
+      description: 'Landing page prototype for a café — hero, menu, location, reservation CTA',
+      path: '/prototypes/cafe-landing'
+    },
     // Add your new prototypes here like this:
     // {
     //   title: 'Your new prototype',
@@ -24,30 +28,11 @@ export default function Home() {
   ];
 
   return (
-    <div className={`${styles.container} ${instrumentSans.className}`}>
-      {/* Butterflies in the background */}
-      <img
-        src="/playground/butterfly-flutter.webp"
-        className={styles.butterfly1}
-        alt=""
-        aria-hidden="true"
-      />
-      <img
-        src="/playground/butterfly-flutter.webp"
-        className={styles.butterfly2}
-        alt=""
-        aria-hidden="true"
-      />
-      <img
-        src="/playground/butterfly-flutter.webp"
-        className={styles.butterfly3}
-        alt=""
-        aria-hidden="true"
-      />
+    <div className={styles.container}>
       <header className={styles.header}>
-        <h1>Oubadi Momo's prototypes</h1>
+        <h1>Oubadi Designer</h1>
         <div className={styles.subtitle}>
-          ・｡☆ Exploring the digital frontier ☆｡・
+          Prototypes & experiments
         </div>
       </header>
 
