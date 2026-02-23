@@ -24,6 +24,11 @@ export default function Home() {
       description: 'Minimalist luxury digital piano inspired by macOS — play 2 octaves with Web Audio',
       path: '/prototypes/digital-piano'
     },
+    {
+      title: 'Typography experiments',
+      description: 'CSS-only type treatments — circular text, 3D skew, wavy animation with Instrument Serif & Imperial Script',
+      path: '/prototypes/typography-experiments'
+    },
     // Add your new prototypes here like this:
     // {
     //   title: 'Your new prototype',
