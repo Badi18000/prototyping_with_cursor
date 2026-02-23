@@ -479,7 +479,7 @@ export default function TypographyExperiments() {
                     <input
                       type="text"
                       className={styles.hexInput}
-                      value={hexInputs[i] ?? segmentColors[i]}
+                      value={hexInputs[i] ?? segmentColors[i] ?? DEFAULT_SEGMENT_COLORS[i % DEFAULT_SEGMENT_COLORS.length] ?? ""}
                       onChange={(e) => handleHexInputChange(i, e.target.value)}
                       placeholder="#000000"
                     />

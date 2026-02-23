@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\"",
+    "rebuild": "npm run clean && npm run build"
   },
   "dependencies": {
     "@types/canvas-confetti": "^1.9.0",
