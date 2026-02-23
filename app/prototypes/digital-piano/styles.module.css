@@ -1,0 +1,417 @@
+/* 
+ * Digital Piano - Minimalist Luxury macOS Style
+ * Inspired by: frosted glass, SF Pro typography, subtle shadows, refined spacing
+ */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 50%, #d2d2d7 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  position: relative;
+  padding: 2rem;
+}
+
+/* Back button - minimal, floating */
+.backButton {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  color: #1d1d1f;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.backButton:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.backButton:active {
+  transform: translateY(0);
+}
+
+/* Main window - frosted glass macOS style */
+.window {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 0 0 1px rgba(0, 0, 0, 0.03),
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 12px 24px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* Window header - macOS traffic lights */
+.windowHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Draggable header - cursor and prevent text selection */
+.draggableHeader {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.draggableHeader:active {
+  cursor: grabbing;
+}
+
+.windowControls {
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f57;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.control:nth-child(2) {
+  background: #febc2e;
+}
+
+.control:nth-child(3) {
+  background: #28c840;
+}
+
+.windowTitle {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d1d1f;
+  letter-spacing: -0.01em;
+}
+
+/* Piano keys container */
+.pianoContainer {
+  padding: 24px 20px 20px;
+}
+
+.keysWrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* White keys row */
+.whiteKeys {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.whiteKey {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.05s ease;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+.keyLabel {
+  font-size: 10px;
+  font-weight: 500;
+  color: #86868b;
+  letter-spacing: 0.02em;
+}
+
+.whiteKey:hover {
+  background: linear-gradient(180deg, #f5f5f5 0%, #eeeeee 50%, #e8e8e8 100%);
+}
+
+.whiteKey:active {
+  background: linear-gradient(180deg, #e8e8e8 0%, #e0e0e0 100%);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Live visual feedback when key is played (by user or autoplay) */
+.whiteKey.keyPressed {
+  background: linear-gradient(180deg, #d4e4f7 0%, #c5d9f0 100%);
+  box-shadow: inset 0 2px 8px rgba(0, 122, 255, 0.2);
+  transition: background 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Black keys - positioned above white keys */
+.blackKeys {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65%;
+  pointer-events: none;
+}
+
+.blackKeys button {
+  pointer-events: auto;
+}
+
+.blackKey {
+  position: absolute;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  background: linear-gradient(180deg, #2c2c2e 0%, #1d1d1f 50%, #000000 100%);
+  border: none;
+  border-radius: 0 0 4px 4px;
+  cursor: pointer;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.05s ease;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 2;
+}
+
+.blackKey:hover {
+  background: linear-gradient(180deg, #3a3a3c 0%, #2c2c2e 50%, #1d1d1f 100%);
+}
+
+.blackKey:active {
+  background: linear-gradient(180deg, #1d1d1f 0%, #000000 100%);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Live visual feedback when key is played (by user or autoplay) */
+.blackKey.keyPressed {
+  background: linear-gradient(180deg, #2a3a4a 0%, #1d1d1f 100%);
+  box-shadow: inset 0 2px 8px rgba(100, 150, 255, 0.3);
+  transition: background 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Footer with hint */
+.footer {
+  padding: 12px 20px 16px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.hint {
+  font-size: 12px;
+  color: #86868b;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Oscillator type selector window */
+.oscillatorPanel {
+  padding: 20px;
+}
+
+.oscillatorLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #86868b;
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+}
+
+/* macOS-style segmented control */
+.segmentedControl {
+  display: flex;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.segment {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1d1d1f;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.segment:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.segmentActive {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Songs panel */
+.songsPanel {
+  padding: 20px;
+}
+
+.songButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.playButton {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1d1f;
+  background: rgba(0, 122, 255, 0.15);
+  border: 1px solid rgba(0, 122, 255, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.playButton:hover:not(:disabled) {
+  background: rgba(0, 122, 255, 0.25);
+  border-color: rgba(0, 122, 255, 0.5);
+}
+
+.playButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Metronome panel */
+.metronomePanel {
+  padding: 20px;
+}
+
+.metronomeBeat {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.beatDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  transition: all 0.1s ease;
+}
+
+.beatDot.beatAccent {
+  width: 20px;
+  height: 20px;
+}
+
+.beatDot.beatActive {
+  background: rgba(0, 122, 255, 0.6);
+  transform: scale(1.2);
+}
+
+.beatDot.beatAccent.beatActive {
+  background: rgba(0, 122, 255, 0.9);
+}
+
+.metronomeControls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bpmSlider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+}
+
+.bpmSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #007aff;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.bpmSlider:disabled {
+  opacity: 0.6;
+}
+
+.bpmSlider:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+
+.metronomeButton {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1d1f;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.metronomeButton:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.metronomeButtonActive {
+  background: rgba(255, 59, 48, 0.15);
+  border-color: rgba(255, 59, 48, 0.3);
+  color: #d70015;
+}
+
+.metronomeButtonActive:hover {
+  background: rgba(255, 59, 48, 0.25);
+}

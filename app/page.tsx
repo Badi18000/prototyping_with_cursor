@@ -19,6 +19,11 @@ export default function Home() {
       description: 'Landing page prototype for a café — hero, menu, location, reservation CTA',
       path: '/prototypes/cafe-landing'
     },
+    {
+      title: 'Digital piano',
+      description: 'Minimalist luxury digital piano inspired by macOS — play 2 octaves with Web Audio',
+      path: '/prototypes/digital-piano'
+    },
     // Add your new prototypes here like this:
     // {
     //   title: 'Your new prototype',
