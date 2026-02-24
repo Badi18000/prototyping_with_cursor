@@ -13,6 +13,7 @@ import {
   Space_Mono,
   Syne,
   Cinzel,
+  Cormorant_Garamond,
 } from "next/font/google";
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import html2canvas from "html2canvas";
@@ -91,6 +92,13 @@ const cinzel = Cinzel({
   weight: ["400", "600", "700"],
   subsets: ["latin"],
   variable: "--font-cinzel",
+});
+
+const cormorant = Cormorant_Garamond({
+  weight: ["300", "400", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  style: ["normal", "italic"],
 });
 
 const DEFAULT_TEXT = "voya|go";
@@ -293,6 +301,123 @@ const LOGO_STYLES = [
       </div>
     ),
   },
+  /* ===== 6 nouveaux styles pro ===== */
+  {
+    id: "tagline",
+    label: "Wordmark + Tagline",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoTagline}>
+        <span className={styles.taglineMain}>
+          {segments.map((s, i) => (
+            <span key={i} style={{ color: s.color }}>{s.text}</span>
+          ))}
+        </span>
+        <span
+          className={styles.taglineSub}
+          style={{ color: segments[0]?.color ?? "#1a1a1a" }}
+        >
+          STUDIO · DESIGN · AGENCY
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "ghost",
+    label: "Ghost Outline",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoGhost}>
+        {segments.map((s, i) => (
+          <span
+            key={i}
+            className={styles.ghostWord}
+            style={{ "--ghost-stroke": s.color } as React.CSSProperties}
+          >
+            {s.text.toUpperCase()}
+          </span>
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "luxury-spaced",
+    label: "Luxury Spaced",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoLuxurySpaced}>
+        {segments.map((s, i) => (
+          <span key={i} className={styles.luxurySpacedWord} style={{ color: s.color }}>
+            {s.text.toUpperCase()}
+          </span>
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "initial-mark",
+    label: "Initial Mark",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoInitialMark}>
+        <span
+          className={styles.initialMarkBig}
+          style={{ color: segments[0]?.color ?? "#1a1a1a" }}
+        >
+          {segments[0]?.text.charAt(0).toUpperCase()}
+        </span>
+        <div
+          className={styles.initialMarkWords}
+          style={{ borderColor: segments[0]?.color ?? "#1a1a1a" }}
+        >
+          {segments.map((s, i) => (
+            <span
+              key={i}
+              className={i === 0 ? styles.initialMarkPrimary : styles.initialMarkSecondary}
+              style={{ color: s.color }}
+            >
+              {s.text.toUpperCase()}
+            </span>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "badge",
+    label: "Badge",
+    render: (segments: Segment[]) => (
+      <div
+        className={styles.logoBadge}
+        style={{ borderColor: segments[0]?.color ?? "#1a1a1a" }}
+      >
+        {segments.map((s, i) => (
+          <span key={i} className={styles.badgeWord} style={{ color: s.color }}>
+            {s.text.toUpperCase()}
+          </span>
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "ruled",
+    label: "Ruled",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoRuled}>
+        <div
+          className={styles.ruledBar}
+          style={{ background: segments[0]?.color ?? "#1a1a1a" }}
+        />
+        <div className={styles.ruledText}>
+          {segments.map((s, i) => (
+            <span key={i} className={styles.ruledWord} style={{ color: s.color }}>
+              {s.text.toUpperCase()}
+            </span>
+          ))}
+        </div>
+        <div
+          className={styles.ruledBar}
+          style={{ background: segments[segments.length - 1]?.color ?? "#1a1a1a" }}
+        />
+      </div>
+    ),
+  },
 ];
 
 export default function TypographyExperiments() {
@@ -442,6 +567,7 @@ export default function TypographyExperiments() {
     spaceMono.variable,
     syne.variable,
     cinzel.variable,
+    cormorant.variable,
   ].join(" ");
 
   return (
