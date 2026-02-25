@@ -928,3 +928,99 @@
   letter-spacing: -0.03em;
   line-height: 1;
 }
+
+/* ===== 4 styles inspirés des 5 photos (Amplemarket, Matabar, Briston, Caribou) ===== */
+
+/* Geo Mark — icône géométrique CSS + wordmark lowercase (style Amplemarket) */
+.logoGeoMark {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.geoMarkIcon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  clip-path: polygon(0% 100%, 40% 0%, 60% 0%, 100% 100%, 74% 100%, 50% 35%, 26% 100%);
+}
+
+.geoMarkText {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  letter-spacing: -0.025em;
+  line-height: 1;
+  display: flex;
+}
+
+/* Script Swash — Playfair italic + swoosh SVG courbé (style Matabar) */
+.logoScriptSwash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.scriptSwashText {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(2rem, 5.5vw, 3rem);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  display: flex;
+  gap: 0.05em;
+}
+
+.scriptSwashLine {
+  width: 88%;
+  height: auto;
+  margin-top: -0.1em;
+}
+
+/* Retro Bold — Playfair Display max taille vintage (style Briston / Caribou rétro) */
+.logoRetroBold {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.2em;
+}
+
+.retroBoldWord {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+}
+
+/* Float Accent — CAPS espacées + SVG bois de cerf flottant (style Caribou élégant) */
+.logoFloatAccent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.floatAccentMark {
+  width: 44px;
+  height: auto;
+  opacity: 0.85;
+}
+
+.floatAccentWords {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.floatAccentWord {
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 2.8vw, 1.3rem);
+  letter-spacing: 0.5em;
+  line-height: 1;
+}

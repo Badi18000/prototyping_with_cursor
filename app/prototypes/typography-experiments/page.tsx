@@ -507,6 +507,96 @@ const LOGO_STYLES = [
       </div>
     ),
   },
+  /* ===== 4 styles inspirés des 5 photos (Amplemarket, Matabar, Briston, Caribou) ===== */
+  {
+    id: "geo-mark",
+    label: "Geo Mark",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoGeoMark}>
+        <div
+          className={styles.geoMarkIcon}
+          style={{ background: segments[0]?.color ?? "#1a1a1a" }}
+        />
+        <span className={styles.geoMarkText}>
+          {segments.map((s, i) => (
+            <span key={i} style={{ color: s.color }}>
+              {s.text.toLowerCase()}
+            </span>
+          ))}
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "script-swash",
+    label: "Script Swash",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoScriptSwash}>
+        <span className={styles.scriptSwashText}>
+          {segments.map((s, i) => (
+            <span key={i} style={{ color: s.color }}>
+              {s.text}
+            </span>
+          ))}
+        </span>
+        <svg
+          className={styles.scriptSwashLine}
+          viewBox="0 0 200 22"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M 8,16 Q 60,3 100,14 Q 140,22 192,10"
+            stroke={segments[0]?.color ?? "#1a1a1a"}
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
+    ),
+  },
+  {
+    id: "retro-bold",
+    label: "Retro Bold",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoRetroBold}>
+        {segments.map((s, i) => (
+          <span key={i} className={styles.retroBoldWord} style={{ color: s.color }}>
+            {s.text}
+          </span>
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "float-accent",
+    label: "Float Accent",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoFloatAccent}>
+        <svg
+          className={styles.floatAccentMark}
+          viewBox="0 0 44 22"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M22,21 L22,11 M22,11 L14,4 M22,11 L30,4 M14,4 L11,1 M14,4 L16,1 M30,4 L33,1 M30,4 L28,1"
+            stroke={segments[0]?.color ?? "#1a1a1a"}
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <div className={styles.floatAccentWords}>
+          {segments.map((s, i) => (
+            <span key={i} className={styles.floatAccentWord} style={{ color: s.color }}>
+              {s.text.toUpperCase()}
+            </span>
+          ))}
+        </div>
+      </div>
+    ),
+  },
 ];
 
 export default function TypographyExperiments() {
