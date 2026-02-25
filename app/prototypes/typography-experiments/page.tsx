@@ -418,6 +418,95 @@ const LOGO_STYLES = [
       </div>
     ),
   },
+  /* ===== 4 styles inspirés des photos (Waterpik + Bench) ===== */
+  {
+    id: "three-tier",
+    label: "Three Tier",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoThreeTier}>
+        <span
+          className={styles.threeTierTop}
+          style={{ color: segments[0]?.color ?? "#1a1a1a" }}
+        >
+          {segments[0]?.text.toUpperCase()}
+        </span>
+        <div className={styles.threeTierHero}>
+          {segments.map((s, i) => (
+            <span key={i} style={{ color: s.color }}>{s.text}</span>
+          ))}
+        </div>
+        <span
+          className={styles.threeTierBottom}
+          style={{ color: segments[segments.length - 1]?.color ?? "#1a1a1a" }}
+        >
+          PREMIUM · COLLECTION
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "wordmark-period",
+    label: "Wordmark.",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoWordmarkPeriod}>
+        {segments.map((s, i) => (
+          <span
+            key={i}
+            className={styles.wordmarkPeriodText}
+            style={{ color: s.color }}
+          >
+            {s.text.toLowerCase()}
+          </span>
+        ))}
+        <span
+          className={styles.wordmarkPeriodDot}
+          style={{ color: segments[segments.length - 1]?.color ?? "#1a1a1a" }}
+        >
+          .
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "contraste",
+    label: "Contraste",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoContraste}>
+        {segments.map((s, i) => (
+          <span
+            key={i}
+            className={i % 2 === 0 ? styles.contrasteBold : styles.contrasteLight}
+            style={{ color: s.color }}
+          >
+            {s.text.toUpperCase()}
+          </span>
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "dot-mark",
+    label: "Dot Mark",
+    render: (segments: Segment[]) => (
+      <div className={styles.logoDotMark}>
+        <div className={styles.dotMarkGrid}>
+          {[...Array(6)].map((_, i) => (
+            <span
+              key={i}
+              className={styles.dotMarkDot}
+              style={{ background: segments[0]?.color ?? "#1a1a1a" }}
+            />
+          ))}
+        </div>
+        <span
+          className={styles.dotMarkText}
+          style={{ color: segments[0]?.color ?? "#1a1a1a" }}
+        >
+          {segments.map((s) => s.text).join("").toLowerCase()}.
+        </span>
+      </div>
+    ),
+  },
 ];
 
 export default function TypographyExperiments() {

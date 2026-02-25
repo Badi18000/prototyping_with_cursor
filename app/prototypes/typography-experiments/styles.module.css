@@ -808,3 +808,123 @@
   letter-spacing: 0.18em;
   line-height: 1;
 }
+
+/* ===== 4 styles inspirés des photos (Waterpik + Bench) ===== */
+
+/* Three Tier — hiérarchie brand / hero / descriptor (style Waterpik REVIVE) */
+.logoThreeTier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  text-align: center;
+}
+
+.threeTierTop {
+  font-family: var(--font-space-mono), monospace;
+  font-weight: 400;
+  font-size: 0.55rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.threeTierHero {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 5.5vw, 3.2rem);
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.12em;
+}
+
+.threeTierBottom {
+  font-family: var(--font-ibm-plex), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+  opacity: 0.75;
+}
+
+/* Wordmark. — gras + point d'accent (style Bench.) */
+.logoWordmarkPeriod {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wordmarkPeriodText {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 2.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.wordmarkPeriodDot {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 2.75rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Contraste — alternance bold/light inline (style POWERPULSE) */
+.logoContraste {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.04em;
+}
+
+.contrasteBold {
+  font-family: var(--font-ibm-plex), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.contrasteLight {
+  font-family: var(--font-ibm-plex), system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+/* Dot Mark — grille 2×3 de points + wordmark (style Bench B remplacé) */
+.logoDotMark {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.dotMarkGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.dotMarkDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: block;
+}
+
+.dotMarkText {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 2.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
