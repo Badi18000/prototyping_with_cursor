@@ -34,6 +34,11 @@ export default function Home() {
       description: 'Windows-inspired note-taking app — draggable windows, taskbar, Start Menu, rich text, drawing canvas, and 4 themes (Fluent, Aero, XP, Classic)',
       path: '/prototypes/noted-os'
     },
+    {
+      title: 'Book Shelf',
+      description: 'Notion-powered reading list gallery — connects to your Notion database to display books with cover, genre, rating, and review',
+      path: '/prototypes/book-shelf'
+    },
     // Add your new prototypes here like this:
     // {
     //   title: 'Your new prototype',

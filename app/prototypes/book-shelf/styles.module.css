@@ -1,0 +1,463 @@
+/**
+ * Book Shelf — Notion-powered reading list
+ * Warm, editorial aesthetic — like a beautiful bookstore
+ */
+
+/* ── Page ────────────────────────────────────────────────── */
+.page {
+  min-height: 100vh;
+  background: #f8f6f1;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  padding: 2rem 2.5rem 5rem;
+  color: #1a1a1a;
+}
+
+/* ── Back button ─────────────────────────────────────────── */
+.back {
+  position: fixed;
+  top: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 8px;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: all 0.15s;
+  z-index: 50;
+}
+.back:hover { background: #f0ece3; }
+
+/* ── Header ──────────────────────────────────────────────── */
+.header {
+  max-width: 1100px;
+  margin: 0.5rem auto 1.75rem;
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pageTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.25rem;
+  color: #1a1a1a;
+}
+
+.pageStats {
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: #9c9891;
+  font-style: italic;
+  margin: 0;
+}
+
+.searchInput {
+  padding: 0.55rem 1rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 8px;
+  outline: none;
+  width: 240px;
+  color: #1a1a1a;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.searchInput::placeholder { color: #b4b0aa; }
+.searchInput:focus {
+  border-color: #1a1a1a;
+  box-shadow: 0 0 0 2px rgba(26,26,26,0.06);
+}
+
+/* ── Toolbar ─────────────────────────────────────────────── */
+.toolbar {
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #e8e4dc;
+}
+
+/* Genre filter pills */
+.genreRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.genreBtn {
+  padding: 0.3rem 0.85rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 20px;
+  color: #6b6761;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.genreBtn:hover { border-color: #1a1a1a; color: #1a1a1a; }
+.genreBtnOn {
+  background: #1a1a1a !important;
+  color: #fff !important;
+  border-color: #1a1a1a !important;
+}
+
+/* Sort buttons */
+.sortRow {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+.sortLabel {
+  font-family: system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #b4b0aa;
+  margin-right: 0.2rem;
+}
+
+.sortBtn {
+  padding: 0.28rem 0.7rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #9c9891;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: all 0.15s;
+}
+.sortBtn:hover { background: rgba(0,0,0,0.04); color: #1a1a1a; }
+.sortBtnOn {
+  color: #1a1a1a !important;
+  border-color: #d4d0c8 !important;
+  background: rgba(0,0,0,0.03) !important;
+}
+.sortArrow { opacity: 0.6; }
+
+/* ── Book Grid ───────────────────────────────────────────── */
+.grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Book Card ───────────────────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+
+/* Cover image */
+.coverWrap {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f0ece3;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.card:hover .cover { transform: scale(1.04); }
+
+/* Placeholder cover when no image */
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.placeholderLetter {
+  font-family: Georgia, serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.placeholderGenre {
+  font-family: system-ui, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.55;
+}
+
+/* Card body */
+.cardBody {
+  padding: 0.85rem 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.genreBadge {
+  display: inline-block;
+  padding: 0.14rem 0.55rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.bookTitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bookAuthor {
+  font-family: system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: #9c9891;
+  margin: 0;
+}
+
+/* Stars */
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  margin-top: 0.1rem;
+}
+
+.starOn  { color: #f59e0b; font-size: 0.82rem; }
+.starOff { color: #e5e1d8; font-size: 0.82rem; }
+
+.ratingNum {
+  font-family: system-ui, sans-serif;
+  font-size: 0.68rem;
+  color: #9c9891;
+  margin-left: 5px;
+}
+
+.noRating {
+  font-family: system-ui, sans-serif;
+  font-size: 0.68rem;
+  color: #c8c4bc;
+  font-style: italic;
+}
+
+/* Review */
+.reviewWrap { margin-top: 0.25rem; }
+
+.review {
+  font-family: system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: #7a7672;
+  line-height: 1.55;
+  font-style: italic;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.reviewOpen {
+  -webkit-line-clamp: 12;
+}
+
+.reviewToggle {
+  margin-top: 4px;
+  background: none;
+  border: none;
+  font-family: system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #9c9891;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.reviewToggle:hover { color: #1a1a1a; }
+
+/* ── Empty state ─────────────────────────────────────────── */
+.emptyMsg {
+  max-width: 1100px;
+  margin: 4rem auto;
+  text-align: center;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: #9c9891;
+  font-style: italic;
+}
+
+/* ── Loading state ───────────────────────────────────────── */
+.loadingState {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: #9c9891;
+}
+
+.spinner {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e8e4dc;
+  border-top-color: #1a1a1a;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Error state ─────────────────────────────────────────── */
+.errorState {
+  max-width: 480px;
+  margin: 5rem auto;
+  padding: 1.75rem;
+  background: #fff;
+  border: 1px solid #fca5a5;
+  border-radius: 12px;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+}
+.errorTitle { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+.errorMsg   { font-size: 0.82rem; color: #6b7280; line-height: 1.5; }
+
+/* ── Setup Guide ─────────────────────────────────────────── */
+.setupWrap {
+  max-width: 640px;
+  margin: 3rem auto;
+}
+
+.setupCard {
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 14px;
+  padding: 2.5rem 2.75rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+
+.setupEmoji {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.setupTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.setupSub {
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: #9c9891;
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+.setupSteps {
+  font-family: system-ui, sans-serif;
+  font-size: 0.86rem;
+  color: #3a3835;
+  line-height: 1.65;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.setupSteps a { color: #0078d4; text-underline-offset: 2px; }
+.setupSteps strong { color: #1a1a1a; }
+
+.codeBlock {
+  display: block;
+  margin: 0.6rem 0;
+  padding: 0.75rem 1rem;
+  background: #f5f2ec;
+  border: 1px solid #e8e4dc;
+  border-radius: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  white-space: pre;
+  overflow-x: auto;
+  color: #1a1a1a;
+}
+
+.setupSteps code,
+.setupNote code {
+  background: #f5f2ec;
+  padding: 0.12em 0.45em;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85em;
+  color: #1a1a1a;
+}
+
+.setupNote {
+  margin-top: 1.75rem;
+  padding: 1rem 1.1rem;
+  background: #f8f6f1;
+  border-radius: 8px;
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: #7a7672;
+  line-height: 1.6;
+}
