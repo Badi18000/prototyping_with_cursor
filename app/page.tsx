@@ -29,6 +29,11 @@ export default function Home() {
       description: 'CSS-only type treatments — circular text, 3D skew, wavy animation with Instrument Serif & Imperial Script',
       path: '/prototypes/typography-experiments'
     },
+    {
+      title: 'Noted OS',
+      description: 'Windows-inspired note-taking app — draggable windows, taskbar, Start Menu, rich text, drawing canvas, and 4 themes (Fluent, Aero, XP, Classic)',
+      path: '/prototypes/noted-os'
+    },
     // Add your new prototypes here like this:
     // {
     //   title: 'Your new prototype',
