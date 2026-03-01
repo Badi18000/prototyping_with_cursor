@@ -3,9 +3,6 @@
  * 4 themes: Fluent (Win 11), Aero (Win 7), Luna (Win XP), Classic (Win 95)
  */
 
-/* ── Reset ───────────────────────────────────────────────────── */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
 /* ── Desktop ──────────────────────────────────────────────────── */
 .desktop {
   position: relative;
